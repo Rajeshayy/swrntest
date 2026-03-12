@@ -8,7 +8,7 @@ export const testSchema = z.object({
   start_time: z.string().min(1, {
     message: "Start time is required.",
   }),
-  duration_minutes: z.coerce.number().min(1, {
+  duration_minutes: z.number().min(1, {
     message: "Duration must be at least 1 minute.",
   }),
 })

@@ -37,9 +37,7 @@ export function TestManagement() {
   const [searchTerm, setSearchTerm] = useState("")
   const [isAddOpen, setIsAddOpen] = useState(false)
 
-  type TestFormValues = z.infer<typeof testSchema>
-
-  const form = useForm<TestFormValues>({
+  const form = useForm<z.infer<typeof testSchema>>({
     resolver: zodResolver(testSchema),
     defaultValues: {
       title: "",
@@ -70,7 +68,7 @@ export function TestManagement() {
     setLoading(false)
   }
 
-  const onSubmit: SubmitHandler<TestFormValues> = async (values) => {
+  const onSubmit = async (values: z.infer<typeof testSchema>) => {
     try {
       const user = auth.currentUser
       
